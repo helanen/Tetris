@@ -103,7 +103,7 @@ public class Tetris extends JPanel {
         newPiece();
     }
 
-    // Put a new, random piece into the dropping position
+    // Put a new random piece into the dropping position
     public void newPiece() {
         pieceOrigin = new Point(5, 0);
         rotation = 0;
@@ -163,7 +163,7 @@ public class Tetris extends JPanel {
         repaint();
     }
 
-    // Move the piece left or right
+    // Move the piece
     public void move(int i) {
         if (!collidesAt(pieceOrigin.x + i, pieceOrigin.y, rotation)) {
             pieceOrigin.x += i;
@@ -196,8 +196,7 @@ public class Tetris extends JPanel {
         fixToWell();
     }
 
-    // Make the dropping piece part of the well, so it is available for
-    // collision detection.
+    // Make the dropping piece part of the well
     public void fixToWell() {
         for (Point p : Tetraminos[currentPiece][rotation]) {
             well[pieceOrigin.x + p.x][pieceOrigin.y + p.y] = tetraminoColors[currentPiece];
@@ -214,8 +213,7 @@ public class Tetris extends JPanel {
         }
     }
 
-    // Clear completed rows from the field and award score according to
-    // the number of simultaneously cleared rows.
+    // Clear completed rows and increase the score
     public void clearRows() {
         boolean gap;
         int numClears = 0;
